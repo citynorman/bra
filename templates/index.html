@@ -1,0 +1,39 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+
+{% block content %}
+<div class="container">
+  <h1>Hello, world!</h1>
+
+  <h2>This is the sample form (basic)</h2>
+  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+<h3>Hello {%if data %}{{data.name}}{%endif%}</h3>
+</div>
+<img id="choice1" src='static/img/ATU_Seaport.jpg'><img>
+<img id="choice2" src='static/img/ATU_Seaport.jpg'><img>
+<script src="static/js/jquery-2.1.1.min.js"></script>
+<script>
+	
+$( "#field1" ).val("jquery") 
+
+$( "#choice1" ).click(choice1);
+$( "#choice2" ).click(choice2);
+
+function choice1(){
+	$( "#field1" ).val("jquery1") 
+	$( "#choice1" ).val("jquery1") 
+}
+
+function choice2(){
+	$( "#field1" ).val("jquery2") 
+	$( "#choice1" ).val("jquery2") 
+}
+
+</script> 
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}
