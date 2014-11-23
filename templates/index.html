@@ -4,30 +4,88 @@
 
 {% block content %}
 <div class="container">
-  <h1>Hello, world!</h1>
+  <h1>Let's get you a bra!</h1>
+<div>
 
-  <h2>This is the sample form (basic)</h2>
-  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
-<h3>Hello {%if data %}{{data.name}}{%endif%}</h3>
+<h3>Choose your shoulder type:</h3>
+<img id="iChoice1" class="cChoice1" src='static/img/Function2/A1.jpg'></img>
+<img id="iChoice2" class="cChoice1" src='static/img/Function2/A2.jpg'></img>
+<img id="iChoice3" class="cChoice1" src='static/img/Function2/A3.jpg'></img>
+<img id="iChoice4" class="cChoice1" src='static/img/Function2/A4.jpg'></img>
 </div>
-<img id="choice1" src='static/img/ATU_Seaport.jpg'><img>
-<img id="choice2" src='static/img/ATU_Seaport.jpg'><img>
+
+<div>
+<h3>Choose your breast type:</h3>
+<img id="iChoice1" class="cChoice2" src='static/img/Function2/B1.jpg'></img>
+<img id="iChoice2" class="cChoice2" src='static/img/Function2/B2.jpg'></img>
+</div>
+
+<div>
+<h3>Do you have armpit roll?</h3>
+<img id="iChoice1" class="cChoice3" src='static/img/Function2/C1.jpg'></img>
+<img id="iChoice2" class="cChoice3" src='static/img/Function2/C2.jpg'></img>
+</div>
+
+<div>
+<h3>What's your cup size?</h3>
+<img id="iChoice1" class="cChoice4" src='static/img/Function2/D1.jpg'></img>
+<img id="iChoice2" class="cChoice4" src='static/img/Function2/D2.jpg'></img>
+<img id="iChoice3" class="cChoice4" src='static/img/Function2/D3.jpg'></img>
+</div>
+
+  {{ wtf.quick_form(form, button_map={'submit_button': 'primary'}) }}
+  
+</div>
 <script src="static/js/jquery-2.1.1.min.js"></script>
 <script>
-	
-$( "#field1" ).val("jquery") 
 
-$( "#choice1" ).click(choice1);
-$( "#choice2" ).click(choice2);
+$( "#field1" ).val("start"); 
+$( "#iChoice1.cChoice1" ).click({param1:"A1"},choice1);
+$( "#iChoice2.cChoice1" ).click({param1:"A2"},choice1);
+$( "#iChoice3.cChoice1" ).click({param1:"A3"},choice1);
+$( "#iChoice4.cChoice1" ).click({param1:"A4"},choice1);
 
-function choice1(){
-	$( "#field1" ).val("jquery1") 
-	$( "#choice1" ).val("jquery1") 
+$( "#iChoice1.cChoice2" ).click({param1:"B1"},choice2);
+$( "#iChoice2.cChoice2" ).click({param1:"B2"},choice2);
+
+$( "#iChoice1.cChoice3" ).click({param1:"C1"},choice3);
+$( "#iChoice2.cChoice3" ).click({param1:"C2"},choice3);
+
+$( "#iChoice1.cChoice4" ).click({param1:"D1"},choice4);
+$( "#iChoice2.cChoice4" ).click({param1:"D2"},choice4);
+$( "#iChoice3.cChoice4" ).click({param1:"D3"},choice4);
+
+
+function markIt(element) {
+	element.css( "border", "3px solid red" );
 }
 
-function choice2(){
-	$( "#field1" ).val("jquery2") 
-	$( "#choice1" ).val("jquery2") 
+function unmarkIt(element) {
+	element.removeAttr('style');
+}
+
+function choice1(text){
+	unmarkIt($( ".cChoice1" ));
+	markIt($(this));
+	$( "#choice1" ).val(text.data.param1); 
+}
+
+function choice2(text){
+	unmarkIt($( ".cChoice2" ));
+	markIt($(this));
+	$( "#choice2" ).val(text.data.param1); 
+}
+
+function choice3(text){
+	unmarkIt($( ".cChoice3" ));
+	markIt($(this));
+	$( "#choice3" ).val(text.data.param1); 
+}
+
+function choice4(text){
+	unmarkIt($( ".cChoice4" ));
+	markIt($(this));
+	$( "#choice4" ).val(text.data.param1); 
 }
 
 </script> 

@@ -146,25 +146,26 @@
 </form>
 <h3>Hello </h3>
 </div>
-<img id="choice1" src='img/ATU_Seaport.jpg'><img>
-<img id="choice2" src='img/ATU_Seaport.jpg'><img>
+<img id="choice1" src='img/ATU_Seaport.jpg'></img>
+<img id="choice2" src='img/ATU_Seaport.jpg'></img>
 <script src="js/jquery-2.1.1.min.js"></script>
 <script>
 	
-$( "#field1" ).val("jquery") 
+$( "#field1" ).val("jquery");
 
-$( "#choice1" ).click(choice1);
 $( "#choice2" ).click(choice2);
-
-function choice1(){
-	$( "#field1" ).val("jquery1") 
-	$( "#choice1" ).val("jquery1") 
-}
+$( "#choice1" ).click(choice1);
 
 function choice2(){
-	$( "#field1" ).val("jquery2") 
-	$( "#choice1" ).val("jquery2") 
+	$( "#field1" ).val("jquery3");
+	$( "#choice1" ).val("jquery2"); 
 }
+
+function choice1(){
+	$( "#field1" ).val("jquery1");
+	$( "#choice1" ).val("jquery1"); 
+}
+
 
 </script> 
 

@@ -1,40 +1,21 @@
 from flask import Flask, render_template
 from flask_bootstrap import Bootstrap
 from flask_appconfig import AppConfig
-from flask_wtf import Form, RecaptchaField
+from flask_wtf import Form
 from wtforms import TextField, HiddenField, ValidationError, RadioField,\
     BooleanField, SubmitField, IntegerField, FormField, validators
 from wtforms.validators import Required
 
 from flask import request
+import pandas as pd
 
-# straight from the wtforms docs:
-class TelephoneForm(Form):
-    country_code = IntegerField('Country Code')
-    area_code = IntegerField('Area Code/Exchange')
-    number = TextField('Number')
-
-
-class ExampleForm(Form):
-    field1 = TextField('First Field', description='This is field one.')
-    field2 = TextField('Second Field', description='This is field two.')
-    choice3 = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
-    choice1 = HiddenField('You cannot see this', description='Nope')
-
-    radio_field = RadioField('This is a radio field', choices=[
-        ('head_radio', 'Head radio'),
-        ('radio_76fm', "Radio '76 FM"),
-        ('lips_106', 'Lips 106'),
-        ('wctr', 'WCTR'),
-    ])
-    checkbox_field = BooleanField('This is a checkbox',
-                                  description='Checkboxes can be tricky.')
-
-    # subforms
-    #mobile_phone = FormField(TelephoneForm)
-
-    # you can change the label as well
-    #office_phone = FormField(TelephoneForm, label='Your office phone')
+class ChoiceForm(Form):
+    choice1 = TextField('Q1')
+    choice2 = TextField('Q2')
+    choice3 = TextField('Q3')
+    choice4 = TextField('Q4')
+#    choice3 = RadioField('Label', choices=[('value','description'),('value_two','whatever')])
+    #choice1 = HiddenField('You cannot see this', description='Nope')
 
     submit_button = SubmitField('Submit Form')
 
@@ -52,18 +33,43 @@ def create_app(configfile=None):
 
     @app.route('/',methods=['GET','POST'])
     def index():
-        form = ExampleForm()
+        form = ChoiceForm()
         data=None
         if request.method == 'POST':
-            #print request.form['field1']
-            print form.field1.data
-            print 'post'
-            data={'name':form.choice1.data}
-        if form.validate_on_submit(): #to get error messages to the browser
-            pass
+            #get form answers
+            data={'A':form.choice1.data,'B':form.choice2.data,'C':form.choice3.data,'D':form.choice4.data}
+            
+            #find right style
+            style='full'
+            
+            if(data['D']=='D3'):
+                style='minimizer'
+            else:
+                if(data['A']=='A1' or data['A']=='A2'):
+                    style='full'
+                else:
+                    if(data['B']=='B1'):
+                        style='full'
+                    else:
+                        if(data['C']=='C1'):
+                            if(data['D']=='D1'):
+                                style='demi'
+                            else:
+                                style='plunge'
+                        else:
+                            if(data['D']=='D1'):
+                                style='balconette'
+                            else:
+                                style='plunge'
+                                
+                
+            data=pd.read_csv('static/data/specs.csv')
+            data=data[data.StyleOutput == style]
+            
+            return render_template('out.html', style=style,styledf=data.StyleOutput,links=data.linksPages,images=data.fileImages)
         else:
-            print 'invalid'
-        return render_template('index.html', form=form,data=data)
+            return render_template('index.html', form=form)
+        
 
     def shutdown_server():
         func = request.environ.get('werkzeug.server.shutdown')
