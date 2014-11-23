@@ -1,0 +1,25 @@
+{% extends "bootstrap/base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/fixes.html" as fixes %}
+
+{% block content %}
+<div class="container">
+  <h1>Let's get you a bra!</h1>
+
+  {%if style %}
+  <h4>Recommended Style:{{style}}</h4>
+  {%endif%}
+  
+  <ul>{%for istyle in styledf%}<li><p>{{istyle}}</p></li>{%endfor%}</ul>
+  <ul>{%for link in links%}<li><a href="{{link}}" target="_blank">{{link}}</a></li>{%endfor%}</ul>
+  <ul>{%for image in images%}<li><img src="static/img/bras/{{image}}"></img></li>{%endfor%}</ul>
+</div>
+<script src="static/js/jquery-2.1.1.min.js"></script>
+<script>
+</script> 
+{% endblock %}
+
+{% block head %}
+{{super()}}
+{{fixes.ie8()}}
+{% endblock %}

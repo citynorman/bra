@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+
+
+  <head>
+
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <!--<link href="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" media="screen">-->
+
+<!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+
+  </head>
+  <body>
+    
+    
+<div class="container">
+  <h1>Hello, woman!</h1>
+
+  <h2>Let's see if your bra is a fit!</h2>
+  
+<h3>What does your underband look like? </h3>
+
+<img id="choice1" src='img/Function1/A1.jpg'></img>
+<img id="choice2" src='img/Function1/A2.jpg'></img>
+<img id="choice3" src='img/Function1/A3.jpg'></img>
+<img id="choice4" src='img/Function1/A4.jpg'></img>
+<p id="out1">	</p>
+ 
+<h3>What does your cup look like? </h3>
+
+
+<img id="choiceb0" src='img/Function1/B0.jpg'></img>
+<img id="choiceb1" src='img/Function1/B1.jpg'></img>
+<img id="choiceb2" src='img/Function1/B2.jpg'></img>
+<img id="choiceb3" src='img/Function1/B3.jpg'></img>
+<p id="out2">	</p>
+
+<h3>What does your strap look like? </h3>
+
+<img id="choicec1" src='img/Function1/C1.jpg'></img>
+<img id="choicec2" src='img/Function1/C2.jpg'></img>
+<img id="choicec3" src='img/Function1/C3.jpg'></img>
+<p id="out3">	</p>
+
+<h2>This is how perfect size should look like </h2>
+<img id="choiced1" src='img/Function1/D1.jpg'></img>
+<img id="choiceb2" src='img/Function1/B2.jpg'></img>
+<img id="choicec2" src='img/Function1/C2.jpg'></img>
+<p>1.When you lift your arm, your bra won't come up and there is no space between bra center and your chest.	</p>
+<p>2.Your breast is perfectly contained in your bra, neither too tight nor too loose. 	</p>   
+<p>3.Adjust your strap in a perfect length so you won't feel tired wearing your right size bra. </p> 
+
+</div>
+<script src="js/jquery-2.1.1.min.js"></script>
+<script>
+	
+$( "#field1" ).val("jquery start") 
+
+$( "#choice1" ).click(choice1);
+$( "#choice2" ).click(choice2);
+$( "#choice3" ).click(choice3);
+$( "#choice4" ).click(choice4);
+	$( "#out1" ).text("Click on pictures to see result") ;
+
+function choice1(){
+
+	$( "#out1" ).text("You need a bra with bigger underband size.") ;
+}
+
+function choice2(){
+
+	$( "#out1" ).text("Your underband size is perfect! Keep this size for future reference!") ;
+	
+}
+function choice3(){
+
+	$( "#out1" ).text("You need a bra with smaller underband size.") ;
+	
+}
+function choice4(){
+
+	$( "#out1" ).text("You need a bra with smaller underband size.") ;
+	
+}
+
+$( "#choiceb0" ).click(choiceb0);
+$( "#choiceb1" ).click(choiceb1);
+$( "#choiceb2" ).click(choiceb2);
+$( "#choiceb3" ).click(choiceb3);
+	$( "#out2" ).text("Click on pictures to see result") ;
+function choiceb0(){
+	$( "#out2" ).text("You need a bra with bigger cup size.") ;
+}
+function choiceb1(){
+	$( "#out2" ).text("You need a bra with bigger cup size.") ;
+}
+function choiceb2(){
+	$( "#out2" ).text("Your cup size is fine for the current style. Keep this as future reference!") ;
+}
+function choiceb3(){
+	$( "#out2" ).text("You need a bra with smaller cup size.") ;
+}
+
+
+ 
+
+
+$( "#choicec1" ).click(choicec1);
+$( "#choicec2" ).click(choicec2);
+$( "#choicec3" ).click(choicec3);
+	$( "#out3" ).text("Click on pictures to see result") ;
+
+function choicec1(){
+	$( "#out3" ).text("Try to fasten your strap, it will help support your breast.") ;
+}
+function choicec2(){
+	$( "#out3" ).text("Your strap length is fine. Keep it up!") ;
+}
+function choicec3(){
+	$( "#out3" ).text("Try to loose your strap, otherwise this might give you a double breast.") ;
+}
+</script> 
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>-->
+
+
+ 
+<!--    <script src="//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.0/js/bootstrap.min.js"></script>-->
+  </body>
+</html>
